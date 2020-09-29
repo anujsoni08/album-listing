@@ -1,6 +1,16 @@
 .photos-list {
   display: grid;
   grid-template-columns: auto auto auto;
-  grid-gap: 25px;
+  grid-gap: 15px;
   padding: 25px;
+}
+
+.pagination-div {
+  display: table;
+  margin: 0 auto;
+}
+
+.image {
+  border-radius: 10px;
+  margin-bottom: 10px;
 }

@@ -1,29 +1,29 @@
 import * as actionTypes from "./actionTypes";
 
-export const setAllAlbumList = (value) => {
+export const setAllAlbumList = (albumList) => {
   return {
     type: actionTypes.SET_ALL_ALBUM_LIST,
-    value,
+    value: albumList,
   };
 };
 
-export const setAllUserList = (value) => {
+export const setAllUserList = (userList) => {
   return {
     type: actionTypes.SET_ALL_USER_LIST,
-    value,
+    value: userList,
   };
 };
 
-export const setAlbumListTotalPages = (value) => {
+export const setAlbumListTotalPages = (totalPages) => {
   return {
     type: actionTypes.SET_ALBUM_LIST_TOTAL_PAGES,
-    value,
+    value: totalPages,
   };
 };
 
-export const setAlbumListCurrentPage = (value) => {
+export const setAlbumListCurrentPageNumber = (pageNumber) => {
   return {
     type: actionTypes.SET_ALBUM_LIST_CURRENT_PAGE,
-    value,
+    value: pageNumber,
   };
 };

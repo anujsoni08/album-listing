@@ -2,7 +2,7 @@ import React from "react";
 
 import loadingGIF from "../../../assets/loadingGIF.gif";
 
-function Loading() {
+const Loading = () => {
   return (
     <div
       style={{
@@ -15,6 +15,6 @@ function Loading() {
       <img src={loadingGIF} alt={"loading"} />
     </div>
   );
-}
+};
 
 export default Loading;

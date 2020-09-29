@@ -1,0 +1,16 @@
+.card {
+  padding: 20px;
+  margin: 20px;
+  background-color: mediumseagreen;
+  color: white;
+}
+
+.link {
+  color: white;
+}
+
+.link:hover,
+.link:active {
+  outline: none;
+  color: white;
+}

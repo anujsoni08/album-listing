@@ -2,6 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../utility";
 
 const initialState = {
+  // Initial State for Album Item
   albumItem: {},
   albumPhotos: [],
   currentPageNumber: 1,

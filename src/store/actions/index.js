@@ -2,12 +2,12 @@ export {
   setAllAlbumList,
   setAllUserList,
   setAlbumListTotalPages,
-  setAlbumListCurrentPage,
+  setAlbumListCurrentPageNumber,
 } from "./albumList";
 
 export {
   setAlbumItem,
   setAlbumPhotos,
   setAlbumItemTotalPages,
-  setAlbumItemCurrentPage,
+  setAlbumItemCurrentPageNumber,
 } from "./albumItem";
