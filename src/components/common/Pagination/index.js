@@ -1,7 +1,7 @@
 import React from "react";
 import { getPageList } from "../../../utils/constants";
 
-const Pagination = (props) => {
+const Pagination = (props) => {         // common pagination component
   const { currentPageNumber, totalPages, getSelectedPageData } = props;
 
   return (

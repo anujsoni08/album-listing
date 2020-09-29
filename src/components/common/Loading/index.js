@@ -4,8 +4,8 @@ import loadingGIF from "../../../assets/loadingGIF.gif";
 
 const Loading = () => {
   return (
-    <div
-      style={{
+    <div               
+      style={{        // style to center the spinner
         position: "absolute",
         top: "50%",
         left: "50%",

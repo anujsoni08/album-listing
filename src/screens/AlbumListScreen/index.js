@@ -21,29 +21,31 @@ const AlbumList = (props) => {
     setAlbumListCurrentPageNumber,
   } = props; // imported props from redux store
 
-  const [loadingState, setLoadingState] = useState(false); // Loadingstate Initial set empty
-  const [currentAllAlbumList, setCurrentAllAlbumList] = useState([]); // CurrentAlbumList
+  const [loadingState, setLoadingState] = useState(false); // loadingstate Initial set false
+  const [currentAllAlbumList, setCurrentAllAlbumList] = useState([]); //  currentAlbumList Initial set empty array
 
   useEffect(() => {
     const getAlbumListing = async () => {
-      setLoadingState(true);
-      const albumList = await handleAlbumList();
-      const userList = await handleUserList();
-      setAllAlbumList(albumList);
-      setAllUserList(userList);
-      setAlbumListTotalPages(Math.ceil(albumList.length / ITEMS_PER_PAGE));
-      setAlbumListCurrentPageNumber(currentPageNumber);
+      setLoadingState(true); // loading set true
+      const albumList = await handleAlbumList(); // fetching albumList
+      const userList = await handleUserList(); // fetching userList
+      setAllAlbumList(albumList); // updating albumList in store
+      setAllUserList(userList); // updating userList in store
+      setAlbumListTotalPages(Math.ceil(albumList.length / ITEMS_PER_PAGE)); // updating totalPages in store
+      setAlbumListCurrentPageNumber(currentPageNumber); // updating currentPageNumber in store
       setCurrentAllAlbumList(
+        // setting currentPageData
         albumList.slice(
           (currentPageNumber - 1) * ITEMS_PER_PAGE,
           currentPageNumber * ITEMS_PER_PAGE
         )
       );
-      setLoadingState(false);
+      setLoadingState(false); // loading set false
     };
     getAlbumListing();
   }, []);
 
+  // getting pageWiseData
   const getSelectedPageData = (pageNumber = 1) => {
     setAlbumListCurrentPageNumber(pageNumber);
     setCurrentAllAlbumList(
@@ -54,6 +56,7 @@ const AlbumList = (props) => {
     );
   };
 
+  // rendering pagination
   const renderPagination = () => {
     return (
       <div className="pagination-div">
@@ -66,6 +69,7 @@ const AlbumList = (props) => {
     );
   };
 
+  // rendering albumList
   const renderAlbumList = () => {
     if (Boolean(currentAllAlbumList.length)) {
       return (

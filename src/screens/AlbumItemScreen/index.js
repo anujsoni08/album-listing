@@ -29,34 +29,36 @@ const AlbumItem = (props) => {
     setAllUserList,
     setAlbumItemTotalPages,
     setAlbumItemCurrentPageNumber,
-  } = props;
+  } = props; // getting current state and reducer functions from store
 
-  const [loadingState, setLoadingState] = useState(false); // Loadingstate Initial set false
+  const [loadingState, setLoadingState] = useState(false); // loadingstate Initial set false
   const [currentAlbumPhotos, setCurrentAlbumPhotos] = useState([]); // currentAlbumPhotos initially empty array
 
   useEffect(() => {
     const getAlbumListing = async () => {
-      const albumId = getAlbumId();
-      setLoadingState(true);
-      const albumData = await handleAlbumItemList(albumId);
-      const photosList = await handleAlbumPhotosList(albumId);
-      const userList = await handleUserList();
-      setAlbumItem(albumData);
-      setAlbumPhotos(photosList);
-      setAllUserList(userList);
-      setAlbumItemTotalPages(Math.ceil(photosList.length / ITEMS_PER_PAGE));
-      setAlbumItemCurrentPageNumber(currentPageNumber);
+      setLoadingState(true); // loading set true
+      const albumId = getAlbumId(); // getting albumId from url
+      const albumItemObj = await handleAlbumItemList(albumId); // fetching albumItemObj using albumId
+      const photosList = await handleAlbumPhotosList(albumId); // fetching photosList using albumId
+      const userList = await handleUserList(); // fetching userList
+      setAlbumItem(albumItemObj); // updating albumItemObj in store
+      setAlbumPhotos(photosList); // updating photosList in store
+      setAllUserList(userList); // updating userList in store
+      setAlbumItemTotalPages(Math.ceil(photosList.length / ITEMS_PER_PAGE)); // updating total pages in store
+      setAlbumItemCurrentPageNumber(currentPageNumber); // updating current pages in store
       setCurrentAlbumPhotos(
+        // setting currentPageData
         photosList.slice(
           (currentPageNumber - 1) * ITEMS_PER_PAGE,
           currentPageNumber * ITEMS_PER_PAGE
         )
       );
-      setLoadingState(false);
+      setLoadingState(false); // loading set false
     };
     getAlbumListing();
   }, []);
 
+  // getting pageWiseData
   const getSelectedPageData = (pageNumber = 1) => {
     setAlbumItemCurrentPageNumber(pageNumber);
     setCurrentAlbumPhotos(
@@ -67,6 +69,7 @@ const AlbumItem = (props) => {
     );
   };
 
+  // getting userName from userList by matching userId
   const getUserName = (userId) => {
     if (userId === null || userId === undefined) {
       return "";
@@ -75,6 +78,7 @@ const AlbumItem = (props) => {
     return !!user.name ? user.name : "";
   };
 
+  // rendering pagination
   const renderPagination = () => {
     return (
       <div className="pagination-div">
@@ -87,6 +91,7 @@ const AlbumItem = (props) => {
     );
   };
 
+  // rendering photos list
   const renderPhotosList = () => {
     if (Boolean(currentAlbumPhotos.length)) {
       return (
