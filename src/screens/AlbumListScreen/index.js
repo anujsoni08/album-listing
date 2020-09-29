@@ -43,6 +43,7 @@ const AlbumList = (props) => {
       setLoadingState(false); // loading set false
     };
     getAlbumListing();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // getting pageWiseData
