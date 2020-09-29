@@ -1,14 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { createStore, combineReducers } from "redux";
+import { Provider } from "react-redux";
+import "bootstrap/dist/css/bootstrap.css";
+
+import albumListReducer from "./store/reducers/albumList";
+import albumItemReducer from "./store/reducers/albumItem";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+
+const rootReducer = combineReducers({
+  albumList: albumListReducer,
+  albumItem: albumItemReducer,
+});
+
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </Provider>,
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
